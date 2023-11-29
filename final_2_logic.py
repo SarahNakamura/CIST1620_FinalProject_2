@@ -4,4 +4,10 @@ from gui import *
 
 
 class Logic (QMainWindow, Ui_MainWindow):
-    pass
+
+    def __init__(self):
+        super.__init__()
+        self.setupUi(self)
+
+        self.submit.clicked.connect(lambda: self.submit())
+
