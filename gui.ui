@@ -310,7 +310,7 @@ p, li { white-space: pre-wrap; }
      <string>JPN (Japanese yen)</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="bp_mxn">
+   <widget class="QRadioButton" name="rb_mxn">
     <property name="geometry">
      <rect>
       <x>530</x>
@@ -340,7 +340,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>550</y>
+      <y>570</y>
       <width>256</width>
       <height>91</height>
      </rect>
@@ -355,7 +355,7 @@ p, li { white-space: pre-wrap; }
       <x>70</x>
       <y>330</y>
       <width>631</width>
-      <height>321</height>
+      <height>341</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -389,6 +389,16 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>Verify Account</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="money_usd">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>540</y>
+      <width>256</width>
+      <height>21</height>
+     </rect>
     </property>
    </widget>
   </widget>
