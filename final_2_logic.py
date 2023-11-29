@@ -1,6 +1,7 @@
 from csv import *
 from PyQt6.QtWidgets import *
 from gui import *
+from csv import *
 
 # check line 104 to change frame status
 class Logic (QMainWindow, Ui_MainWindow):
@@ -22,6 +23,8 @@ class Logic (QMainWindow, Ui_MainWindow):
             last_name = str(self.input_last)
             account_num = int(self.input_account)
             pin = int(self.input_pin)
+            information = [first_name, last_name, account_num, pin]
+            account_data = self.request.
         except:
             self.current_amount.insertPlainText(f'Please input correct information')
 
