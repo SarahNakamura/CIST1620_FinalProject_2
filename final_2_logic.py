@@ -31,9 +31,10 @@ class Logic (QMainWindow, Ui_MainWindow):
         try:
             money = float(self.input_amount)
             if self.rb_cyn.isChecked():
-                pass
+                money_usd = money / 7.024500
+                self.money_in_usd.insertPlainText()
             elif self.rb_eur.isChecked():
-                pass
+                money_usd = money / 0.911826
             elif self.rb_cad.isChecked():
                 pass
             elif self.rb_gbp.isChecked():

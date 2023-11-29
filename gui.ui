@@ -391,7 +391,7 @@ p, li { white-space: pre-wrap; }
      <string>Verify Account</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="money_usd">
+   <widget class="QTextBrowser" name="money_in_usd">
     <property name="geometry">
      <rect>
       <x>170</x>
