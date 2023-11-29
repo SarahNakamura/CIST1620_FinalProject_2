@@ -1,0 +1,14 @@
+country,unit,1USD = country(unit)
+china,CNY,7.024500
+euro,EUR,0.911826
+UK,GBP,0.788832
+japan,JPY,147.608000
+south korea, KRW,1260.740000
+canada,CAD,1.360670
+mexico,MXN,17.187900
+
+
+
+
+# reference for used website https://www.ofx.com/en-us/
+# the rate is retrieved on November, 29th, 2023
