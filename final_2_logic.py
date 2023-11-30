@@ -1,7 +1,6 @@
-from csv import *
+import csv
 from PyQt6.QtWidgets import *
 from gui import *
-from csv import *
 
 # check line 104 to change frame status
 class Logic (QMainWindow, Ui_MainWindow):
@@ -24,9 +23,31 @@ class Logic (QMainWindow, Ui_MainWindow):
             account_num = int(self.input_account)
             pin = int(self.input_pin)
             information = [first_name, last_name, account_num, pin]
-            account_data = self.request.
+            with open('accounts.csv', newline='') as csvfile:
+                reader = csv.DictReader(csvfile)
+                i = 0
+                for row in reader:
+                    while i <= 3:
+                        if row[i] == information[0]:
+                            i += 1
+                            if row[i] == information[1]:
+                                i+= 1
+                                if row[i] == information[2]:
+                                    i+= 1
+                                    if row [i] == information[3]:
+                                        self.current_amount.insertPlainText(f'Your account has been verified.'
+                                                                            f'The current balance is {row[4]}')
+                                    else:
+                                        raise Exception
+                                else:
+                                    raise Exception
+                            else:
+                                raise Exception
+                        else:
+                            raise Exception
         except:
-            self.current_amount.insertPlainText(f'Please input correct information')
+            self.current_amount.insertPlainText(f'Please input correct account information')
+
 
 # convert any foreign currency if any radio button is selected other than USD
     def currency_conversion(self):
