@@ -1,10 +1,10 @@
-first name, last name,account number,amount, PIN
-Bob,Carter,72826427,1450.50,3748
-Mary, Keller,36181949, 2203.60,8298
-Jane, Smith,16837827,4130.40,5783
-Calvin, Williams,26483947,3891.89,2832
-Jack, Miller,17482932,13424.00,8593
-Elliot, Harris,57328930,8501.32,7422
-Matt, Brown,36239850,47634.43,1847
-Angelica,Lopez,83937595,4791.50,4732
-Charlie,Anderson,09472839,470131.74,1122
+first name, last name,account number,PIN,amount
+Bob,Carter,72826427,3748,1450.50
+Mary, Keller,36181949,8298,2203.60
+Jane, Smith,16837827,5783,4130.40
+Calvin, Williams,26483947,2832,3891.89
+Jack, Miller,17482932,8593,13424.00
+Elliot, Harris,57328930,7422,8501.32
+Matt, Brown,36239850,1847,47634.43
+Angelica,Lopez,83937595,4732,4791.50
+Charlie,Anderson,09472839,1122,470131.74
