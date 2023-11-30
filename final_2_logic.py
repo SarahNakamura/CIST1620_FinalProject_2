@@ -32,11 +32,14 @@ class Logic (QMainWindow, Ui_MainWindow):
                             i += 1
                             if row[i] == information[1]:
                                 i+= 1
-                                if row[i] == information[2]:
-                                    i+= 1
-                                    if row [i] == information[3]:
+                                if float(row[i]) == float(information[2]):
+                                    i += 1
+                                    if float(row[i]) == float(information[3]):
+                                        amount = float(row[4])
                                         self.current_amount.insertPlainText(f'Your account has been verified.'
-                                                                            f'The current balance is {row[4]}')
+                                                                            f'The current balance is {amount}')
+                                        self.frame.isVisible(True)
+                                        return amount
                                     else:
                                         raise Exception
                                 else:
@@ -47,7 +50,6 @@ class Logic (QMainWindow, Ui_MainWindow):
                             raise Exception
         except:
             self.current_amount.insertPlainText(f'Please input correct account information')
-
 
 # convert any foreign currency if any radio button is selected other than USD
     def currency_conversion(self):
@@ -82,7 +84,6 @@ class Logic (QMainWindow, Ui_MainWindow):
         except:
             self.final_message.insertPlainText(f'Please input valid value.')
 
-
     def deposit_money(self,amount):
         if amount <= 0:
             return False
@@ -102,10 +103,11 @@ class Logic (QMainWindow, Ui_MainWindow):
 # display error/succession and final amount in account
     def account_modify(self):
         self.currency_conversion()
+        amount = self.verify_account()
         if self.deposit.isChecked():
-            self.deposit_money()
+            self.deposit_money(amount)
         else:
-            self.withdraw_money()
+            self.withdraw_money(amount)
 
     def clear(self):
         self.input_first.clear()
