@@ -4,6 +4,7 @@ from final_2_logic import *
 def main():
     application = QApplication([])
     window = Logic()
+    window.show()
     application.exec()
 
 
