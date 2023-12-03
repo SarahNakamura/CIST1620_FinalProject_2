@@ -1,9 +1,11 @@
 import csv
 from PyQt6.QtWidgets import *
 from gui import *
+import pandas as pd
 
 
 class Logic (QMainWindow, Ui_MainWindow):
+    a = 1
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -36,6 +38,7 @@ class Logic (QMainWindow, Ui_MainWindow):
                                 self.current_amount.insertPlainText(f'Your account balance is {row_list[i][4]} (USD).')
                                 self.frame_2.show()
                                 current_balance = float(row_list[i][4])
+                                self.a = i
                                 return current_balance
                             else:
                                 i += 1
@@ -58,7 +61,6 @@ class Logic (QMainWindow, Ui_MainWindow):
     def currency_conversion(self):
         try:
             money = float(self.input_amount.text())
-            print(money)
             if money < 0:
                 raise Exception
             else:
@@ -85,7 +87,6 @@ class Logic (QMainWindow, Ui_MainWindow):
                 elif self.rb_mxn.isChecked():
                     money_usd = money / 17.187900
                     money_usd = round(money_usd, 2)
-                    print(money_usd)
                     self.money_in_usd.insertPlainText(f'{money:.2f} MXN is equivalent to {money_usd} USD.')
                     return money_usd
                 elif self.rb_jpy.isChecked():
@@ -116,7 +117,6 @@ class Logic (QMainWindow, Ui_MainWindow):
     def withdraw_money(self, amount):  # withdraw from account by subtracting input amount from original balance
         money_to_subtract = amount
         original_balance = self.verify_account()
-        print(original_balance)
         if money_to_subtract <= 0 or money_to_subtract > original_balance:
             return False
         else:
@@ -127,20 +127,28 @@ class Logic (QMainWindow, Ui_MainWindow):
 # deposit/withdraw amount from current account calling another function
 # display error/succession and final amount in account
     def account_modify(self):
-        print('A')
+        csv_row = self.a
         amount = self.currency_conversion()
         if self.deposit.isChecked():
             if self.deposit_money(amount):
                 current_balance = self.deposit_money(amount)
+                current_balance = round(current_balance, 2)
                 self.final_message.insertPlainText(f"Your transaction was successful. "
                                                    f"The current account balance is {current_balance:.2f} USD.")
+                update = pd.read_csv("accounts.csv")
+                update.loc[csv_row, [5]] = current_balance
+                update.to_csv("accounts.csv", index=False)
             else:
                 self.final_message.insertPlainText(f"Your transaction was unsuccessful.")
         else:
             if self.withdraw_money(amount):
                 current_balance = self.withdraw_money(amount)
+                current_balance = round(current_balance, 2)
                 self.final_message.insertPlainText(f"Your transaction was successful. "
                                                    f"The current account balance is {current_balance:.2f} USD.")
+                update = pd.read_csv("accounts.csv")
+                update.loc[csv_row, 'amount'] = current_balance
+                update.to_csv("accounts.csv", index=False)
             else:
                 self.final_message.insertPlainText(f"Your transaction was unsuccessful.")
 
