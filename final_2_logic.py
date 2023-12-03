@@ -4,7 +4,7 @@ from gui import *
 
 
 class Logic (QMainWindow, Ui_MainWindow):
-    def __init__(self, balance=0):
+    def __init__(self):
         super().__init__()
         self.setupUi(self)
         self.verify.clicked.connect(lambda: self.verify_account())  # account verification
@@ -25,7 +25,6 @@ class Logic (QMainWindow, Ui_MainWindow):
             with open('accounts.csv', newline='') as csvfile:
                 reader = csv.reader(csvfile)
                 i = 1
-                j = 0
                 row_list = []
                 for row in reader:
                     row_list.append(row)
@@ -51,7 +50,7 @@ class Logic (QMainWindow, Ui_MainWindow):
         except:
             self.current_amount.insertPlainText(f'Please input correct account information.')
 
-    def show_frame(self): # showing frame to input the amount of money to put in or take out from bank account
+    def show_frame(self):  # showing frame to input the amount of money to put in or take out from bank account
         self.frame.show()
         return True
 
@@ -85,7 +84,7 @@ class Logic (QMainWindow, Ui_MainWindow):
                     return money_usd
                 elif self.rb_mxn.isChecked():
                     money_usd = money / 17.187900
-                    money_usd = round(money_usd,2)
+                    money_usd = round(money_usd, 2)
                     print(money_usd)
                     self.money_in_usd.insertPlainText(f'{money:.2f} MXN is equivalent to {money_usd} USD.')
                     return money_usd
@@ -100,12 +99,12 @@ class Logic (QMainWindow, Ui_MainWindow):
                     self.money_in_usd.insertPlainText(f'{money:.2f} KRW is equivalent to {money_usd:.2f} USD.')
                     return money_usd
                 else:
-                    self.money_in_usd.insertPlainText(f'No conversion is needed. The amount is {money:.2f} USD')
+                    self.money_in_usd.insertPlainText(f'No conversion is needed. The amount is {money:.2f} USD.')
                     return money
         except:
-            self.money_in_usd.insertPlainText(f'Fail')
+            self.money_in_usd.insertPlainText(f'Please put in valid value.')
 
-    def deposit_money(self,amount): # add money to original account by adding input amount to original balance
+    def deposit_money(self, amount):  # add money to original account by adding input amount to original balance
         money_to_add = amount
         if money_to_add <= 0:
             return False
@@ -114,7 +113,7 @@ class Logic (QMainWindow, Ui_MainWindow):
             updated_balance = original_balance + money_to_add
             return updated_balance
 
-    def withdraw_money(self, amount): # withdraw from account by subtracting input amount from original balance
+    def withdraw_money(self, amount):  # withdraw from account by subtracting input amount from original balance
         money_to_subtract = amount
         original_balance = self.verify_account()
         print(original_balance)
@@ -138,15 +137,14 @@ class Logic (QMainWindow, Ui_MainWindow):
             else:
                 self.final_message.insertPlainText(f"Your transaction was unsuccessful.")
         else:
-            #if self.withdraw_money(amount) is True:
-                if self.withdraw_money(amount):
-                    current_balance = self.withdraw_money(amount)
-                    self.final_message.insertPlainText(f"Your transaction was successful. "
-                                                       f"The current account balance is {current_balance:.2f} USD.")
-                else:
-                    self.final_message.insertPlainText(f"Your transaction was unsuccessful.")
+            if self.withdraw_money(amount):
+                current_balance = self.withdraw_money(amount)
+                self.final_message.insertPlainText(f"Your transaction was successful. "
+                                                   f"The current account balance is {current_balance:.2f} USD.")
+            else:
+                self.final_message.insertPlainText(f"Your transaction was unsuccessful.")
 
-    def clear(self): # clear input
+    def clear(self):  # clear input
         self.input_first.clear()
         self.input_last.clear()
         self.input_account.clear()
@@ -157,4 +155,3 @@ class Logic (QMainWindow, Ui_MainWindow):
         self.final_message.clear()
         self.frame.setHidden(True)
         self.frame_2.setHidden(True)
-
