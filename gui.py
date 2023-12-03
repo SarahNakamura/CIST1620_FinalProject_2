@@ -120,10 +120,14 @@ class Ui_MainWindow(object):
         self.second_message.setObjectName("second_message")
         self.withdraw = QtWidgets.QRadioButton(parent=self.frame_2)
         self.withdraw.setGeometry(QtCore.QRect(80, 40, 171, 20))
+        self.withdraw.setAutoRepeat(False)
         self.withdraw.setObjectName("withdraw")
         self.deposit = QtWidgets.QRadioButton(parent=self.frame_2)
         self.deposit.setGeometry(QtCore.QRect(350, 40, 100, 20))
         self.deposit.setObjectName("deposit")
+        self.button_clear = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.button_clear.setGeometry(QtCore.QRect(280, 760, 113, 32))
+        self.button_clear.setObjectName("button_clear")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 896, 37))
@@ -164,6 +168,7 @@ class Ui_MainWindow(object):
         self.second_message.setText(_translate("MainWindow", "How can I help you today?"))
         self.withdraw.setText(_translate("MainWindow", "Withdraw"))
         self.deposit.setText(_translate("MainWindow", "Deposit"))
+        self.button_clear.setText(_translate("MainWindow", "Clear"))
 
 
 if __name__ == "__main__":
