@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>816</height>
+    <width>896</width>
+    <height>844</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -119,45 +119,6 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
    </widget>
-   <widget class="QRadioButton" name="deposit">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>360</y>
-      <width>100</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Deposit</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="second_message">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>340</y>
-      <width>251</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>How can I help you today?</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="withdraw">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>360</y>
-      <width>171</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Withdraw</string>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="input_first">
     <property name="geometry">
      <rect>
@@ -198,169 +159,6 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="amount">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>380</y>
-      <width>60</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Amount</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="input_amount">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>380</y>
-      <width>113</width>
-      <height>21</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="currency">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>420</y>
-      <width>60</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Currency</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="rb_usd">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>420</y>
-      <width>121</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>USD (US dollar)</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="rb_cyn">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>420</y>
-      <width>151</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>CNY (Chinese yuan)</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="rb_eur">
-    <property name="geometry">
-     <rect>
-      <x>520</x>
-      <y>420</y>
-      <width>100</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>EUR (euro)</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="rb_cad">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>450</y>
-      <width>161</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>CAD (Canadian Dollar)</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="rb_gbp">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>450</y>
-      <width>191</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>GBP (British pound sterling)</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="rb_jpy">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>480</y>
-      <width>141</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>JPY (Japanese yen)</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="rb_mxn">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>450</y>
-      <width>151</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>MXN (Mexican peso)</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="rb_krw">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>480</y>
-      <width>181</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>KRW (South Korean won)</string>
-    </property>
-   </widget>
-   <widget class="QTextBrowser" name="final_message">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>570</y>
-      <width>256</width>
-      <height>91</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="submit">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>510</y>
-      <width>113</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Submit</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="verify">
     <property name="geometry">
      <rect>
@@ -374,22 +172,12 @@ p, li { white-space: pre-wrap; }
      <string>Verify Account</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="money_in_usd">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>540</y>
-      <width>256</width>
-      <height>21</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>330</y>
-      <width>631</width>
+      <y>410</y>
+      <width>651</width>
       <height>351</height>
      </rect>
     </property>
@@ -399,6 +187,237 @@ p, li { white-space: pre-wrap; }
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
+    <widget class="QLabel" name="currency">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>60</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Currency</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rb_usd">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>80</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>USD (US dollar)</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rb_cyn">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>80</y>
+       <width>151</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>CNY (Chinese yuan)</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rb_eur">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>80</y>
+       <width>100</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>EUR (euro)</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="amount">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>60</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Amount</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="input_amount">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>50</y>
+       <width>113</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="final_message">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>250</y>
+       <width>491</width>
+       <height>91</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="submit">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>180</y>
+       <width>113</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Submit</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="money_in_usd">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>220</y>
+       <width>491</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rb_cad">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>120</y>
+       <width>161</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>CAD (Canadian Dollar)</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rb_gbp">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>120</y>
+       <width>191</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>GBP (British pound sterling)</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rb_mxn">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>120</y>
+       <width>151</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>MXN (Mexican peso)</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rb_jpy">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>160</y>
+       <width>141</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>JPY (Japanese yen)</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rb_krw">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>160</y>
+       <width>181</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>KRW (South Korean won)</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame_2">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>320</y>
+      <width>651</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="second_message">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>10</y>
+       <width>251</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>How can I help you today?</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="withdraw">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>40</y>
+       <width>171</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Withdraw</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="deposit">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>40</y>
+       <width>100</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Deposit</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -406,7 +425,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>896</width>
      <height>37</height>
     </rect>
    </property>
