@@ -58,7 +58,6 @@ class Logic (QMainWindow, Ui_MainWindow):
     def currency_conversion(self):
         try:
             money = float(self.input_amount.text())
-            print(money)
             if money < 0:
                 raise Exception
             else:
@@ -85,7 +84,6 @@ class Logic (QMainWindow, Ui_MainWindow):
                 elif self.rb_mxn.isChecked():
                     money_usd = money / 17.187900
                     money_usd = round(money_usd, 2)
-                    print(money_usd)
                     self.money_in_usd.insertPlainText(f'{money:.2f} MXN is equivalent to {money_usd} USD.')
                     return money_usd
                 elif self.rb_jpy.isChecked():
@@ -116,7 +114,6 @@ class Logic (QMainWindow, Ui_MainWindow):
     def withdraw_money(self, amount):  # withdraw from account by subtracting input amount from original balance
         money_to_subtract = amount
         original_balance = self.verify_account()
-        print(original_balance)
         if money_to_subtract <= 0 or money_to_subtract > original_balance:
             return False
         else:
@@ -127,7 +124,6 @@ class Logic (QMainWindow, Ui_MainWindow):
 # deposit/withdraw amount from current account calling another function
 # display error/succession and final amount in account
     def account_modify(self):
-        print('A')
         amount = self.currency_conversion()
         if self.deposit.isChecked():
             if self.deposit_money(amount):
