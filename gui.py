@@ -72,6 +72,7 @@ class Ui_MainWindow(object):
         self.rb_usd = QtWidgets.QRadioButton(parent=self.frame)
         self.rb_usd.setGeometry(QtCore.QRect(80, 80, 121, 20))
         self.rb_usd.setObjectName("rb_usd")
+        self.rb_usd.setChecked(True)
         self.rb_cyn = QtWidgets.QRadioButton(parent=self.frame)
         self.rb_cyn.setGeometry(QtCore.QRect(230, 80, 151, 20))
         self.rb_cyn.setObjectName("rb_cyn")

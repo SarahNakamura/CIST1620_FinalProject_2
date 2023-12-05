@@ -1,7 +1,6 @@
 import csv
 from PyQt6.QtWidgets import *
 from gui import *
-import pandas as pd
 
 
 class Logic (QMainWindow, Ui_MainWindow):
@@ -13,11 +12,12 @@ class Logic (QMainWindow, Ui_MainWindow):
         self.submit.clicked.connect(lambda: self.account_modify())  # lead to balance change
         self.deposit.clicked.connect(lambda: self.show_frame())  # show frame
         self.withdraw.clicked.connect(lambda: self.show_frame())  # show frame
-        self.button_clear.clicked.connect(lambda: self.clear())
+        self.button_clear.clicked.connect(lambda: self.clear())  # clearing values and hiding frames
 
 # verify account info (check name, account number, PIN) import information from accounts.csv (try/except)
 # display current amount if account verified
     def verify_account(self):
+        self.current_amount.clear()
         try:
             first_name = str(self.input_first.text()).strip().upper()
             last_name = str(self.input_last.text()).strip().upper()
@@ -58,11 +58,14 @@ class Logic (QMainWindow, Ui_MainWindow):
         return True
 
 # convert any foreign currency if any radio button is selected other than USD and return the converted money
+# USD is set as default currency
     def currency_conversion(self):
+        self.money_in_usd.clear()
         try:
             money = float(self.input_amount.text())
-            if money < 0:
-                raise Exception
+            if money <= 0.00:
+                self.money_in_usd.insertPlainText(f'Please input valid amount to proceed.')
+                return False
             else:
                 if self.rb_cyn.isChecked():
                     money_usd = money / 7.024500
@@ -104,53 +107,62 @@ class Logic (QMainWindow, Ui_MainWindow):
                     return money
         except:
             self.money_in_usd.insertPlainText(f'Please put in valid value.')
+            return False
 
+# deposit the amount of money input and return updated balance
     def deposit_money(self, amount):  # add money to original account by adding input amount to original balance
         money_to_add = amount
-        if money_to_add <= 0:
-            return False
-        else:
-            original_balance = self.verify_account()
-            updated_balance = original_balance + money_to_add
-            return updated_balance
+        original_balance = self.verify_account()
+        updated_balance = original_balance + money_to_add
+        return updated_balance
 
+# withdraw the amount of money input and return updated balance
     def withdraw_money(self, amount):  # withdraw from account by subtracting input amount from original balance
         money_to_subtract = amount
         original_balance = self.verify_account()
-        if money_to_subtract <= 0 or money_to_subtract > original_balance:
-            return False
-        else:
-            updated_balance = original_balance - money_to_subtract
-            return updated_balance
+        updated_balance = original_balance - money_to_subtract
+        return updated_balance
 
 # modify currency (if foreign -> USD)
 # deposit/withdraw amount from current account calling another function
 # display error/succession and final amount in account
     def account_modify(self):
-        csv_row = self.a
+        self.final_message.clear()
+        csv_row = int(self.a)
         amount = self.currency_conversion()
-        if self.deposit.isChecked():
-            if self.deposit_money(amount):
-                current_balance = self.deposit_money(amount)
-                current_balance = round(current_balance, 2)
-                self.final_message.insertPlainText(f"Your transaction was successful. "
-                                                   f"The current account balance is {current_balance:.2f} USD.")
-                update = pd.read_csv("accounts.csv")
-                update.loc[csv_row, [5]] = current_balance
-                update.to_csv("accounts.csv", index=False)
-            else:
-                self.final_message.insertPlainText(f"Your transaction was unsuccessful.")
+        if self.deposit.isChecked() and self.currency_conversion():
+            current_balance = self.deposit_money(amount)
+            current_balance = round(current_balance, 2)
+            self.final_message.insertPlainText(f"Your transaction was successful. "
+                                               f"The current account balance is {current_balance:.2f} USD.")
+            self.overwrite_account_balance('accounts.csv', csv_row, 4, current_balance)
+            return True
+        elif self.withdraw_money(amount) and self.currency_conversion():
+            current_balance = self.withdraw_money(amount)
+            current_balance = round(current_balance, 2)
+            self.final_message.insertPlainText(f"Your transaction was successful. "
+                                               f"The current account balance is {current_balance:.2f} USD.")
+            self.overwrite_account_balance('accounts.csv', csv_row, 4, current_balance)
+            return True
         else:
-            if self.withdraw_money(amount):
-                current_balance = self.withdraw_money(amount)
-                current_balance = round(current_balance, 2)
-                self.final_message.insertPlainText(f"Your transaction was successful. "
-                                                   f"The current account balance is {current_balance:.2f} USD.")
-                update = pd.read_csv("accounts.csv")
-                update.loc[csv_row, 'amount'] = current_balance
-                update.to_csv("accounts.csv", index=False)
-            else:
-                self.final_message.insertPlainText(f"Your transaction was unsuccessful.")
+            self.final_message.insertPlainText(f"Your transaction was unsuccessful.")
+            return False
+
+#  updating the csv file by rewriting  the entire file but updating only the account balance modified
+    def overwrite_account_balance(self, file_name, row_num, column_num, new_balance):
+        rows = []
+        with open(file_name, 'r', newline='') as file:
+            reader = csv.reader(file)
+            for row in reader:
+                rows.append(row)
+        if row_num < len(rows) and column_num < len(rows[row_num]):
+            rows[row_num][column_num] = new_balance
+            with open(file_name, 'w', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerows(rows)
+        else:
+            self.final_message.insertPlainText(f"Your transaction was unsuccessful.")
+            return False
 
     def clear(self):  # clear input
         self.input_first.clear()
@@ -161,5 +173,6 @@ class Logic (QMainWindow, Ui_MainWindow):
         self.current_amount.clear()
         self.money_in_usd.clear()
         self.final_message.clear()
+        self.rb_usd.setChecked(True)
         self.frame.setHidden(True)
         self.frame_2.setHidden(True)
